@@ -15,6 +15,7 @@ This Android mobile application that calculates petrol costs in Malaysia and app
 - About page with GitHub link
 
 ## Navigation
+
 ### Homepage
 1. Select fuel type (RON95, RON97, Diesel) from the dropdown
 2. Current petrol price will be displayed automatically
