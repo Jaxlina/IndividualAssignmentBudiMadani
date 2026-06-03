@@ -1,22 +1,38 @@
+# Mobile Technology Assignment
 # Jazlina-Individual-Assignment-Budi-Madani
-# Smart Petrol Cost Calculator
+# Smart Petrol Cost Calculator with BUDI MADANI Rebate (Malaysia)
 
 ## Description
-This Android application calculates petrol costs and BUDI MADANI rebates for Malaysian users.
+This Android mobile application that calculates petrol costs in Malaysia and applies the BUDI MADANI fuel subsidy rebate for eligible users.
 
 ## Features
 - Select fuel type (RON95, RON97, Diesel)
-- Enter petrol price
-- Enter fuel usage
-- BUDI MADANI rebate calculation
-- About page
-- GitHub repository link
+- Auto-display current petrol price per liter
+- Enter fuel usage in liters
+- BUDI MADANI eligibility status
+- Calculate total petrol cost, BUDI rebate, and total saving
+- Navigation menu (Home, About)
+- About page with GitHub link
 
-## Author
-Name: NURIN JAZLINA BINTI MASDAN
-Matric No: 2024788725
-Class: CDCS2665A
-Course: ICT602 Mobile Technology And Development
+## Navigation
+### Homepage
+1. Select fuel type (RON95, RON97, Diesel) from the dropdown
+2. Current petrol price will be displayed automatically
+3. Enter fuel usage in liters
+4. Check BUDI MADANI Eligible if applicable (RON95 only)
+5. Tap Calculate to see your results
+
+### About page
+Contains:
+- Application icon
+- Author information (Name, Matric No, Class, Course)
+- Clickable GitHub repository link
+- Copyright notice
+
+## Calculation Formula
+- Total Petrol Cost = Fuel Usage x Petrol Price per Liter
+- BUDI Rebate = Fuel Usage x RM1.99 (RON95 + BUDI eligible only)
+- Final Price (TotalSaving) = Total Petrol Cost - BUDI Rebate
 
 ## GitHub Repository
 https://github.com/Jaxlina/IndividualAssignmentBudiMadani
