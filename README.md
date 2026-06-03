@@ -1,6 +1,6 @@
 # Mobile Technology Assignment
-# Jazlina-Individual-Assignment-Budi-Madani
-# Smart Petrol Cost Calculator with BUDI MADANI Rebate (Malaysia)
+## Jazlina Individual Assignment Budi Madani
+## Smart Petrol Cost Calculator with BUDI MADANI Rebate (Malaysia)
 
 ## Description
 This Android mobile application that calculates petrol costs in Malaysia and applies the BUDI MADANI fuel subsidy rebate for eligible users.
