@@ -28,7 +28,7 @@ public class AboutActivity extends AppCompatActivity {
                         Intent intent =
                                 new Intent(
                                         Intent.ACTION_VIEW,
-                                        Uri.parse("https://github.com/Jaxlina"));
+                                        Uri.parse("https://github.com/Jaxlina/IndividualAssignmentBudiMadani"));
 
                         startActivity(intent);
                     }
