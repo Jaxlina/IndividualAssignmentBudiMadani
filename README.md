@@ -1,9 +1,9 @@
-# Mobile Technology Assignment
-### Jazlina Individual Assignment Budi Madani
-### Smart Petrol Cost Calculator with BUDI MADANI Rebate (Malaysia)
+# ICT602 Mobile Technology Assignment
+#### Jazlina Individual Assignment Budi Madani
+#### Smart Petrol Cost Calculator with BUDI MADANI Rebate (Malaysia)
 
 ## Description
-This Android mobile application that calculates petrol costs in Malaysia and applies the BUDI MADANI fuel subsidy rebate for eligible users.
+An Android mobile application that calculates petrol costs in Malaysia and applies the BUDI MADANI fuel subsidy rebate for eligible users.
 
 ## Features
 - Select fuel type (RON95, RON97, Diesel)
@@ -24,9 +24,8 @@ This Android mobile application that calculates petrol costs in Malaysia and app
 5. Tap Calculate to see your results
 
 ### About page
-Contains:
 - Application icon
-- Author information (Name, Matric No, Class, Course)
+- Author information
 - Clickable GitHub repository link
 - Copyright notice
 
