@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,32 +14,42 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
 
     Spinner spFuel;
-    EditText etPrice;
     EditText etUsage;
     CheckBox cbBudi;
     Button btnCalculate;
-    TextView tvResult;
+    TextView tvResult, tvPrice;
+    double [] fuelPrice = {3.72, 4.35, 4.67};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.colorOnPrimary));
+        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+
         spFuel = findViewById(R.id.spFuel);
-        etPrice = findViewById(R.id.etPrice);
         etUsage = findViewById(R.id.etUsage);
         cbBudi = findViewById(R.id.cbBudi);
         btnCalculate = findViewById(R.id.btnCalculate);
         tvResult = findViewById(R.id.tvResult);
+        tvPrice = findViewById(R.id.tvPrice);
 
-        String[] fuelType = {"RON95", "RON97", "Diesel"};
+        String[] fuelType = {
+                "RON95",
+                "RON97",
+                "Diesel"
+        };
 
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(
+                new ArrayAdapter<>(
                         this,
                         android.R.layout.simple_spinner_item,
                         fuelType);
@@ -49,87 +59,83 @@ public class MainActivity extends AppCompatActivity {
 
         spFuel.setAdapter(adapter);
 
-        btnCalculate.setOnClickListener(
-                new View.OnClickListener() {
+        spFuel.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
 
                     @Override
-                    public void onClick(View view) {
+                    public void onItemSelected(
+                            AdapterView<?> parent,
+                            android.view.View view,
+                            int position,
+                            long id) {
 
-                        if(etPrice.getText().toString().equals("") ||
-                                etUsage.getText().toString().equals("")){
-
-                            Toast.makeText(
-                                    MainActivity.this,
-                                    "Please enter all values",
-                                    Toast.LENGTH_SHORT).show();
-
-                            return;
-                        }
-
-                        double price =
-                                Double.parseDouble(
-                                        etPrice.getText().toString());
-
-                        double usage =
-                                Double.parseDouble(
-                                        etUsage.getText().toString());
-
-                        if(price <= 0){
-
-                            Toast.makeText(
-                                    MainActivity.this,
-                                    "Price must be greater than 0",
-                                    Toast.LENGTH_SHORT).show();
-
-                            return;
-                        }
-
-                        if(usage <= 0){
-
-                            Toast.makeText(
-                                    MainActivity.this,
-                                    "Usage must be greater than 0",
-                                    Toast.LENGTH_SHORT).show();
-
-                            return;
-                        }
-
-                        String fuel =
-                                spFuel.getSelectedItem().toString();
-
-                        double totalCost =
-                                price * usage;
-
-                        double rebate = 0;
-
-                        if(fuel.equals("RON95")
-                                && cbBudi.isChecked()){
-
-                            rebate = usage * 1.99;
-                        }
-
-                        double finalAmount =
-                                totalCost - rebate;
-
-                        tvResult.setText(
-                                "Total Cost : RM " +
-                                        String.format("%.2f", totalCost)
-                                        + "\nBUDI Rebate : RM " +
-                                        String.format("%.2f", rebate)
-                                        + "\nFinal Amount : RM " +
-                                        String.format("%.2f", finalAmount)
+                        tvPrice.setText(
+                                "Current Price : RM " + fuelPrice[position]
                         );
                     }
+
+                    @Override
+                    public void onNothingSelected(
+                            AdapterView<?> parent) {
+
+                    }
                 });
+
+        btnCalculate.setOnClickListener(v -> {
+
+            if(etUsage.getText().toString().isEmpty()){
+
+                Toast.makeText(
+                        MainActivity.this,
+                        "Please enter fuel usage",
+                        Toast.LENGTH_SHORT).show();
+
+                return;
+            }
+
+            String fuel =
+                    spFuel.getSelectedItem().toString();
+
+            int position =
+                    spFuel.getSelectedItemPosition();
+
+            double price =
+                    fuelPrice[position];
+
+            double usage =
+                    Double.parseDouble(
+                            etUsage.getText().toString());
+
+            double totalCost =
+                    usage * price;
+
+            double rebate = 0;
+
+            if(fuel.equals("RON95")
+                    && cbBudi.isChecked()){
+                rebate = usage * 1.99;
+            }
+
+            double totalsaving =
+                    totalCost - rebate;
+
+            tvResult.setText(
+                    "Fuel Type : " + fuel
+                            + "\n\nTotal Petrol Cost : RM "
+                            + String.format("%.2f", totalCost)
+                            + "\nBUDI Rebate : RM "
+                            + String.format("%.2f", rebate)
+                            + "\nFinal Amount : RM "
+                            + String.format("%.2f", totalsaving)
+            );
+        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(
                 R.menu.main_menu,
                 menu);
-
         return true;
     }
 

@@ -4,7 +4,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="colorPrimary">#00A19A</color>
-    <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorSecondary">#006B63</color>
+    <color name="colorOnPrimary">#000000</color>
+
+    <color name="colorSecondary">#00A19A</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
 
 </resources>
