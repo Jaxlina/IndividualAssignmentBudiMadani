@@ -102,9 +102,19 @@ public class MainActivity extends AppCompatActivity {
             double price =
                     fuelPrice[position];
 
-            double usage =
-                    Double.parseDouble(
-                            etUsage.getText().toString());
+            double usage;
+
+            try{
+                usage = Double.parseDouble(
+                        etUsage.getText().toString().trim());
+            }
+            catch(NumberFormatException e){
+
+                etUsage.setError("Please enter a valid number");
+                etUsage.requestFocus();
+
+                return;
+            }
 
             double totalCost =
                     usage * price;
